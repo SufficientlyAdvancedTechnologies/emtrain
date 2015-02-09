@@ -3,6 +3,17 @@ production:
     sso_name: 'Emtrain Nue'
     footer_text: '&copy;2015 Emtrain.'
   authenticators:
+    nue_sql_database:
+      authenticator: "ActiveRecord"
+      options:
+        connection:
+          adapter: "sqlite3"
+          pool: 5
+          timeout: 5000
+          database: db/production.sqlite3
+        table: "users"
+        username_column: email
+        password_column: encrypted_password
 
 ########################################
 # LDAP
